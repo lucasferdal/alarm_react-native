@@ -1,52 +1,44 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Constants from 'expo-constants'
-import Animated from "react-native-reanimated"
 import DateTimePicker from '@react-native-community/datetimepicker';
-// import DatePicker from 'react-native-date-picker'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Switch } from 'react-native-paper'
+import { StyleSheet, Text, View, TouchableOpacity, Animated, nativeEvent } from 'react-native';
 import Alarma from "./Alarma";
+import Opciones from "./Opciones"
 
-let alarmitas = []
+let llaveOriginal = 0
 
 const Pantalla = () => {
 
     return (
-        <Animated.View
-            entering={FadeInUp}
-            exiting={FadeOutUp}
-        >
-            lorem ipsum
-        </Animated.View>
-    );
-
-    // const nuevasAlarmas = useRef()
+        <Opciones/>
+    )
 
     // const [date, setDate] = useState(new Date())
     // const [mode, setMode] = useState('time')
     // const [show, setShow] = useState(false)
 
-    // const [newDate, setNewDate] = useState(alarmitas)
-    // // const [translate, setTranslate] = useState()
+    // let [newDate, setNewDate] = useState([])
 
-    // const ballAnimatedValue = useRef(new Animated.Value(0)).current;
+    // let [keys, setKeys] = useState([])
 
-    // const moveBall = () => {
-    //     Animated.timing(ballAnimatedValue, {
-    //         toValue: 1,
-    //         duration: 1000,
-    //         useNativeDriver: true,
-    //     }).start();
-    // };
+    // let [isSwitch, setisSwitch] = useState({
+    //     value: false,
+    //     llave: keys
+    // })
 
-    // const xVal = ballAnimatedValue.interpolate({
-    //     inputRange: [0, 1],
-    //     outputRange: [0, 30],
-    // });
+    // let [nuevoSwitch, setNuevoSwitch] = useState([])
 
-    // const veamos = {
-    //     transform: [{
-    //         translateX: xVal
-    //     }]
+
+    // const toggleSwitch = (i) => {
+    //     setisSwitch(!isSwitch)
+    //     // let filtrado = newDate.filter((e, x) => x !== i)
+
+    //     // setNewDate(newDate = filtrado)
+
+    //     nuevoSwitch[i].value = !nuevoSwitch[i].value
+
+    //     // console.log(nuevoSwitch)
     // }
 
     // const aber = (e, x) => {
@@ -59,26 +51,28 @@ const Pantalla = () => {
     //     let hora = currentDate.getHours()
     //     let minuto = currentDate.getMinutes()
 
-    //     alarmitas.push({
+    //     newDate.push({
     //         hora: hora,
-    //         minuto: minuto
+    //         minuto: minuto,
+    //         key: llaveOriginal
     //     })
 
-    //     console.log(alarmitas)
-    //     // alert(alar)
+    //     nuevoSwitch.push({
+    //         value: false,
+    //         id: llaveOriginal
+    //     })
+
+    //     setKeys(keys + 1)
     // }
 
     // const nose = () => {
     //     setShow(true)
     // }
 
-    // const moverBolita = () => {
-    //     console.log('SKEREEE')
-    // }
-
     // return (
     //     <View style={styles.container}>
     //         <Text style={styles.titulo}>Alarma Rompehuevos</Text>
+    //                     <Opciones />
 
     //         <View style={styles.alarmas}>
     //             <View style={styles.contenedorNuevaAlarma}>
@@ -102,10 +96,11 @@ const Pantalla = () => {
     //             </View>
     //             <View style={styles.hr} />
 
-    //             <View ref={nuevasAlarmas}>
+    //             <View>
 
     //                 {newDate.map((e, i) => {
     //                     let horario = undefined
+    //                     llaveOriginal = i + 1
 
     //                     e.hora >= 12 ? horario = 'PM' : horario = 'AM'
 
@@ -113,10 +108,7 @@ const Pantalla = () => {
     //                         <View key={i} style={[styles.nuevasAlarmas, styles.hr]}>
     //                             <Text style={styles.nuevasAlarmasFuente} >{e.hora}:{e.minuto} {horario}</Text>
 
-    //                             <View style={styles.activarDesactivarAlarma}>
-    //                                 <TouchableOpacity style={[styles.bolita, veamos]} onPress={moveBall()} />
-    //                             </View>
-
+    //                             <Switch style={styles.bolita} value={nuevoSwitch[i].value} onValueChange={() => toggleSwitch(i)} />
     //                         </View>
     //                     )
     //                 })}
@@ -193,14 +185,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     bolita: {
-        width: '50%',
-        height: '110%',
-        backgroundColor: 'white',
-        borderRadius: 100,
-        // transform: [{ translateX: translate}],
-        // marginLeft: '50%'
+        marginRight: '15%'
     }
 
 });
 
 export default Pantalla;
+//197 lineas
